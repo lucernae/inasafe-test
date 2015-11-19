@@ -1,0 +1,23 @@
+
+inasafetest:
+  build: docker-inasafe
+  environment:
+    - UBUNTU_VERSION=precise
+  volumes:
+    - ../../inasafe:/home/test/inasafe
+    - ../../inasafe_data:/home/test/inasafe_data
+    - ./pycharm-helpers/test:/root/.pycharm-helpers
+  ports:
+    - "6666:22" # enable ssh to container
+
+inasafetravis:
+  build: docker-inasafe
+  dockerfile: Dockerfile-travis
+  environment:
+    - UBUNTU_VERSION=precise
+  volumes:
+    - ../../inasafe:/home/test/inasafe
+    - ../../inasafe_data:/home/test/inasafe_data
+    - ./pycharm-helpers/travis:/root/.pycharm-helpers
+  ports:
+    - "6667:22" # enable ssh to container
