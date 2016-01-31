@@ -61,10 +61,10 @@ EXPOSE 22
 # Mount inasafe and insafe_data under /
 
 ADD run-test.sh /run-test.sh
+ADD startup.sh /startup.sh
 RUN chmod +x /run-test.sh
 RUN mkdir -p /home/test/inasafe
 WORKDIR /home/test/inasafe
-RUN echo "Xvfb :99 &" >> ~/.bashrc
 RUN echo "export DISPLAY=:99" >> ~/.bashrc
 RUN echo "source /home/test/inasafe/run-env-linux.sh /usr" >> ~/.bashrc
 
@@ -74,4 +74,4 @@ RUN echo "source /home/test/inasafe/run-env-linux.sh /usr" >> ~/.bashrc
 # Here we list packages to test by default
 #CMD ["safe_qgis"]
 #CMD ["/run-test.sh"]
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/startup.sh"]

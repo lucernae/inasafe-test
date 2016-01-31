@@ -1,5 +1,5 @@
-pycharm-helpers/*
-!.gitkeep
+deployment/pycharm-helpers/*/*
+!deployment/pycharm-helpers/*/.gitkeep
 
 venv
 .idea
